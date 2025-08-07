@@ -20,7 +20,7 @@ m=true; // marcou que mudou
 }
 
 int main(){
-std::cout<<"fps booster modo porco on\n";
+std::cout<<"              \n";
 while(1){ // loop infinito pq sim
 for(auto &e:fs::recursive_directory_iterator(DIR_FF)) // varre tudo
 if(fs::is_regular_file(e)){ // se for arquivo normal
