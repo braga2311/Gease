@@ -1,61 +1,61 @@
-include <iostream>
-#include <cstdlib>
-#include <string>
-#include <unistd.h>
-#include <sys/sysctl.h>
+#include <iostream>    
+#include <cstdlib>    
+#include <string>    
+#include <unistd.h>    
 
-using namespace std;
+using namespace std;    
 
 void print_banner() {
-system("clear");
-cout << "\033[1;36m";
-system("figlet 'GEASE BUFF NET'");
-}
+    system("clear");
+    cout << "\033[1;36m";
+    system("figlet GEASE BUFF NET");
+}    
 
 void verifica_nmap() {
-if (system("which nmap > /dev/null") != 0) {
-cout << "\033[1;33mInstalando nmap...\033[0m" << endl;
-system("pkg install nmap -y > /dev/null 2>&1");
-}
-}
+    if (system("which nmap > /dev/null") != 0) {
+        system("pkg install nmap -y > /dev/null 2>&1");
+    }
+}    
 
 void scan_rede_agressivo() {
-cout << "\033[1;32mVarrendo rede com NMAP...\033[0m" << endl;
-system("nmap -T4 -n -sn $(ip route | grep src | awk '{print $1}')");
-cout << "\033[1;32mPuxando pacotes...\033[0m" << endl;
-system("nmap -T5 --min-rate 1000 $(ip route | grep src | awk '{print $1}') > /dev/null 2>&1 &");
-}
+    system("nmap -T4 -n -sn $(ip route | grep src | awk '{print $1}')");
+    system("nmap -T5 --min-rate 1000 $(ip route | grep src | awk '{print $1}') > /dev/null 2>&1 &");
+}    
 
 void buff_monstro() {
-cout << "\033[1;35mAumentando buffers pra caralho...\033[0m" << endl;
-system("sysctl -w net.core.rmem_max=16777216");
-system("sysctl -w net.core.wmem_max=16777216");
-system("sysctl -w net.ipv4.tcp_rmem='4096 87380 16777216'");
-system("sysctl -w net.ipv4.tcp_wmem='4096 65536 16777216'");
-system("sysctl -w net.core.netdev_max_backlog=10000");
-}
+    system("sysctl -w net.core.rmem_max=16777216");
+    system("sysctl -w net.core.wmem_max=16777216");
+    system("sysctl -w net.ipv4.tcp_rmem='4096 87380 16777216'");
+    system("sysctl -w net.ipv4.tcp_wmem='4096 65536 16777216'");
+    system("sysctl -w net.core.netdev_max_backlog=10000");
+}    
 
 void threads_doidas() {
-cout << "\033[1;34mCriando threads malucas...\033[0m" << endl;
-system("sysctl -w kernel.threads-max=999999");
-system("sysctl -w vm.max_map_count=999999");
-system("sysctl -w kernel.pid_max=999999");
-}
+    system("sysctl -w kernel.threads-max=999999");
+    system("sysctl -w vm.max_map_count=999999");
+    system("sysctl -w kernel.pid_max=999999");
+}    
 
 void conexoes_insanas() {
-cout << "\033[1;36mExplodindo conexões...\033[0m" << endl;
-system("sysctl -w net.ipv4.tcp_max_syn_backlog=999999");
-system("sysctl -w net.core.somaxconn=999999");
-system("sysctl -w net.ipv4.tcp_max_tw_buckets=9999999");
-system("sysctl -w net.ipv4.ip_local_port_range='1024 65535'");
-}
+    system("sysctl -w net.ipv4.tcp_max_syn_backlog=999999");
+    system("sysctl -w net.core.somaxconn=999999");
+    system("sysctl -w net.ipv4.tcp_max_tw_buckets=9999999");
+    system("sysctl -w net.ipv4.ip_local_port_range='1024 65535'");
+}    
+
+void sistema_info() {
+    system("uname -a");
+    system("free -h");
+    system("df -h");
+}    
 
 int main() {
-print_banner();
-verifica_nmap();
-scan_rede_agressivo();
-buff_monstro();
-threads_doidas();
-conexoes_insanas();
-return 0;
+    print_banner();
+    verifica_nmap();
+    scan_rede_agressivo();
+    buff_monstro();
+    threads_doidas();
+    conexoes_insanas();
+    sistema_info();
+    return 0;
 }
