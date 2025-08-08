@@ -6,7 +6,7 @@
 #include <chrono>
 namespace fs=std::filesystem;
 
-std::string DIR_FF="storage/shared/Android/data/com.freefireth/files";
+std::string DIR_FF="storage/Android/data/com.freefireth/files";
 
 // função que troca um valor por outro dentro do texto do arquivo
 void troca(std::string &c,std::string de,std::string pa,bool &m){
