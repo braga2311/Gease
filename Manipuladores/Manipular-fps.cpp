@@ -6,7 +6,6 @@
 #include <chrono>
 namespace fs=std::filesystem;
 
-// pasta do free fire, se mudar o jogo troca aqui
 std::string DIR_FF="storage/shared/Android/data/com.freefireth/files";
 
 // função que troca um valor por outro dentro do texto do arquivo
